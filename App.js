@@ -11,7 +11,6 @@ const Stack = createStackNavigator();
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isInJeju, setIsInJeju] = useState(false);
-  const [hasSelectedItinerary, setHasSelectedItinerary] = useState(false);
   const [itinerary, setItinerary] = useState([]);
 
   useEffect(() => {
@@ -35,7 +34,6 @@ const App = () => {
 
   const handleItinerarySelection = (selectedItinerary) => {
     setItinerary(selectedItinerary);
-    setHasSelectedItinerary(true);
   };
 
   if (isLoading) {
@@ -47,7 +45,7 @@ const App = () => {
       <Stack.Navigator>
         {!isInJeju ? (
           <Stack.Screen name="Welcome">
-            {({ navigation }) => (
+            {() => (
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFFACD' }}>
                 <Text style={{ fontSize: 24, fontWeight: 'bold' }}>JejuGajayo</Text>
                 <Text style={{ fontSize: 18, marginBottom: 20 }}>Your Interactive Travel Companion</Text>
@@ -70,11 +68,16 @@ const App = () => {
         ) : (
           <>
             <Stack.Screen name="Home">
-              {() => <HomeScreen onSelectItinerary={handleItinerarySelection} />}
+              {({ navigation }) => (
+                <HomeScreen
+                  onSelectItinerary={(selectedItinerary) => {
+                    handleItinerarySelection(selectedItinerary);
+                    navigation.navigate('StoryScreen', { itinerary: selectedItinerary });
+                  }}
+                />
+              )}
             </Stack.Screen>
-            <Stack.Screen name="StoryScreen">
-              {() => <StoryScreen itinerary={itinerary} />}
-            </Stack.Screen>
+            <Stack.Screen name="StoryScreen" component={StoryScreen} />
           </>
         )}
       </Stack.Navigator>

@@ -47,12 +47,16 @@ const StoryScreen = ({ route }) => {
           <Text style={styles.content}>{story}</Text>
           <Text style={styles.subheader}>Nearby Suggestion</Text>
           <Text style={styles.suggestion}>{nearbySuggestions}</Text>
-          <Button title="Travel to Another Attraction" onPress={handleTravelToAttraction} />
+          <View style={styles.buttonContainer}>
+            <Button title="Travel to Another Attraction" onPress={handleTravelToAttraction} />
+          </View>
         </>
       ) : (
         <View style={styles.messageContainer}>
           <Text style={styles.message}>You will be notified when you visit selected attraction spots!</Text>
-          <Button title="Travel to Attraction Spot" onPress={handleTravelToAttraction} />
+          <View style={styles.buttonContainer}>
+            <Button title="Travel to Attraction Spot" onPress={handleTravelToAttraction} />
+          </View>
         </View>
       )}
     </ScrollView>
@@ -64,6 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#f5f5f5',
+    paddingBottom: 40,
   },
   header: {
     fontSize: 24,
@@ -103,6 +108,9 @@ const styles = StyleSheet.create({
   loadingText: {
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  buttonContainer: {
+    marginBottom: 20, // Add space under the button
   },
 });
 
