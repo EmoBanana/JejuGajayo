@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import CheckBox from 'expo-checkbox';
 
 const attractions = [
-  'Seongsan Ilchulbong', 'Hallasan', 'Jeju Folk Village', 'Manjanggul Cave', 'Cheonjiyeon Waterfall'
+  'Seongsan Ilchulbong', 'Hallasan', 'Jeju Folk Village', 'Jeju Stone Park' , 'Manjanggul Cave', 'Bijarim Forest', 'Snoopy Garden', 'Hamdeok Beach', 'Seopjikoji', 'Cheonjiyeon Waterfall', 'Hallim Park', 'Jeju ARTE MUSEUM', 'Osulloc Tea Museum'
 ];
 
 const HomeScreen = ({ onSelectItinerary }) => {
@@ -21,7 +21,7 @@ const HomeScreen = ({ onSelectItinerary }) => {
   const handleSubmit = () => {
     const selectedItinerary = Object.keys(itinerary).filter(attraction => itinerary[attraction]);
     onSelectItinerary(selectedItinerary); // Pass itinerary to App.js
-    navigation.navigate('StoryScreen', { itinerary: selectedItinerary }); // Navigate to Story screen
+    navigation.navigate('Personalized Interactive Experience', { itinerary: selectedItinerary }); // Navigate to Story screen
   };
 
   return (

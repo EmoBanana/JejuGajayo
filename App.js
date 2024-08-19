@@ -67,17 +67,17 @@ const App = () => {
           </Stack.Screen>
         ) : (
           <>
-            <Stack.Screen name="Home">
+            <Stack.Screen name="Itinerary Confirmation">
               {({ navigation }) => (
                 <HomeScreen
                   onSelectItinerary={(selectedItinerary) => {
                     handleItinerarySelection(selectedItinerary);
-                    navigation.navigate('StoryScreen', { itinerary: selectedItinerary });
+                    navigation.navigate('Personalized Interactive Experience', { itinerary: selectedItinerary });
                   }}
                 />
               )}
             </Stack.Screen>
-            <Stack.Screen name="StoryScreen" component={StoryScreen} />
+            <Stack.Screen name="Personalized Interactive Experience" component={StoryScreen} />
           </>
         )}
       </Stack.Navigator>
